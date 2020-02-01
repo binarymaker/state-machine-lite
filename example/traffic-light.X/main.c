@@ -31,4 +31,14 @@ int
 main()
 {
   MCU_Init();
+  
+  MCU_INTERRUPT_ENABLE();
+
+  while(1)
+  {
+    GPIO_PinWrite(P_B0, HIGH);
+    DELAY_ms(1000);
+    GPIO_PinWrite(P_B0, LOW);
+    DELAY_ms(1000);
+  }
 }
