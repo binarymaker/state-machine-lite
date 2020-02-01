@@ -25,7 +25,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
-state_machine traffic_light_sm;
+stateMachine_st traffic_light_sm;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -35,9 +35,9 @@ main()
   MCU_Init();
   
   MCU_INTERRUPT_ENABLE();
-  INIT(traffic_light_sm, GREEN);
+  STATE_MACHINE_Init(traffic_light_sm, GREEN);
   while(1)
   {
-    EXEC(traffic_light_sm);
+    STATE_MACHINE_Exec(traffic_light_sm);
   }
 }

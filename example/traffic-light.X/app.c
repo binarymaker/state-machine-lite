@@ -29,9 +29,9 @@ time_t start_time;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
-STATE(GREEN)
+STATE_MACHINE_State(GREEN)
 {
-  if (ENTRY)
+  if (STATE_ENTRY)
   {
     GPIO_PinWrite(P_B0, HIGH);
     start_time = SYSTIMER_Millis();
@@ -39,18 +39,18 @@ STATE(GREEN)
   
   if ((SYSTIMER_Millis() - start_time) > 5000)
   {
-    NEXT_STATE(YELLOW);
+    STATE_MACHINE_StateChange(YELLOW);
   }
   
-  if (EXIT)
+  if (STATE_EXIT)
   {
     GPIO_PinWrite(P_B0, LOW);
   }
 }
 
-STATE(YELLOW)
+STATE_MACHINE_State(YELLOW)
 {
-  if (ENTRY)
+  if (STATE_ENTRY)
   {
     GPIO_PinWrite(P_B2, HIGH);
     start_time = SYSTIMER_Millis();
@@ -58,18 +58,18 @@ STATE(YELLOW)
   
   if ((SYSTIMER_Millis() - start_time) > 2000)
   {
-    NEXT_STATE(RED);
+    STATE_MACHINE_StateChange(RED);
   }
   
-  if (EXIT)
+  if (STATE_EXIT)
   {
     GPIO_PinWrite(P_B2, LOW);
   }
 }
 
-STATE(RED)
+STATE_MACHINE_State(RED)
 {
-  if (ENTRY)
+  if (STATE_ENTRY)
   {
     GPIO_PinWrite(P_B1, HIGH);
     start_time = SYSTIMER_Millis();
@@ -77,10 +77,10 @@ STATE(RED)
   
   if ((SYSTIMER_Millis() - start_time) > 5000)
   {
-    NEXT_STATE(GREEN);
+    STATE_MACHINE_StateChange(GREEN);
   }
   
-  if (EXIT)
+  if (STATE_EXIT)
   {
     GPIO_PinWrite(P_B1, LOW);
   }

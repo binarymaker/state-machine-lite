@@ -39,9 +39,9 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
-STATE(GREEN);
-STATE(RED);
-STATE(YELLOW);
+STATE_MACHINE_State(GREEN);
+STATE_MACHINE_State(RED);
+STATE_MACHINE_State(YELLOW);
 
 #ifdef __cplusplus
 }
