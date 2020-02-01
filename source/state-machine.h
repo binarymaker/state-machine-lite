@@ -53,7 +53,7 @@ typedef struct{
                             }
 #define INIT(sm,task)       {                                                  \
                               sm.handler = (task_handler)task;                 \
-                              sm.last_handler = NULL;
+                              sm.last_handler = NULL;                          \
                               sm.entry = 1u;                                   \
                             }
 #define EXEC(sm)            {                                                  \
