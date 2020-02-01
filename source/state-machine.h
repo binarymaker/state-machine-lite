@@ -46,29 +46,32 @@ typedef struct{
 
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
-#define STATE_MACHINE_State(task)         void task(stateMachine_st *_sm_)
+#define STATE_MACHINE_State(task)               void task(stateMachine_st *_sm_)
 
-#define STATE_MACHINE_StateChange(task)   {                                    \
-                                            _sm_->last_handler = _sm_->handler;\
-                                            _sm_->handler = (task_handler)task;\
-                                          }
+#define STATE_MACHINE_StateChange(task)                                        \
+{                                                                              \
+  _sm_->last_handler = _sm_->handler;                                          \
+  _sm_->handler = (task_handler)task;                                          \
+}
 
-#define STATE_MACHINE_Init(sm,task)       {                                    \
-                                            sm.handler = (task_handler)task;   \
-                                            sm.last_handler = NULL;            \
-                                            sm.entry = 1u;                     \
-                                          }
+#define STATE_MACHINE_Init(sm,task)                                            \
+{                                                                              \
+  sm.handler = (task_handler)task;                                             \
+  sm.last_handler = NULL;                                                      \
+  sm.entry = 1u;                                                               \
+}
 
-#define STATE_MACHINE_Exec(sm)            {                                    \
-                                            sm.last_handler = sm.handler;      \
-                                            sm.handler(&sm);                   \
-                                    sm.entry = (sm.last_handler != sm.handler);\
-                                          }
+#define STATE_MACHINE_Exec(sm)                                                 \
+{                                                                              \
+  sm.last_handler = sm.handler;                                                \
+  sm.handler(&sm);                                                             \
+  sm.entry = (sm.last_handler != sm.handler);                                  \
+}
 
-#define STATE_ENTRY                       (_sm_->entry)
-#define STATE_EXIT                        (_sm_->last_handler != _sm_->handler)
+#define STATE_ENTRY                                                (_sm_->entry)
+#define STATE_EXIT                         (_sm_->last_handler != _sm_->handler)
 
-#define STATE_MACHINE_StateCompare(sm,task) (sm.handler == (task_handler)task)
+#define STATE_MACHINE_StateCompare(sm,task)   (sm.handler == (task_handler)task)
 
 /* Exported functions ------------------------------------------------------- */
 
