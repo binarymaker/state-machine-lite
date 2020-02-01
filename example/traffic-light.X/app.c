@@ -38,6 +38,10 @@ STATE(GREEN)
   
   NEXT_STATE(RED);
   
+  if (EXIT)
+  {
+    GPIO_PinWrite(P_B2, HIGH);
+  }
 }
 
 STATE(RED)
@@ -50,4 +54,8 @@ STATE(RED)
   
   NEXT_STATE(GREEN);
   
+  if (EXIT)
+  {
+    GPIO_PinWrite(P_B2, LOW);
+  }
 }

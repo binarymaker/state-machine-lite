@@ -40,23 +40,28 @@ typedef void (*function_pointer)(void *);
 
 typedef struct{
     function_pointer handler;
+    function_pointer last_handler;
     uint8_t entry;
 }state_machine;
 
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 #define STATE(task)         void task(state_machine *_sm_)
-#define NEXT_STATE(task)    _sm_->handler = (function_pointer)task
+#define NEXT_STATE(task)    {                                                  \
+                              _sm_->last_handler = _sm_->handler;              \
+                              _sm_->handler = (function_pointer)task;          \
+                            }
 #define INIT(sm,task)       {                                                  \
                               sm.handler = (function_pointer)task;             \
                               sm.entry = 1u;                                   \
                             }
 #define EXEC(sm)            {                                                  \
-                              function_pointer last_task = sm.handler;         \
+                              sm.last_handler = sm.handler;                    \
                               sm.handler(&sm);                                 \
-                              sm.entry = (last_task != sm.handler);            \
+                              sm.entry = (sm.last_handler != sm.handler);      \
                             }
 #define ENTRY               (_sm_->entry)
+#define EXIT                (_sm_->last_handler != _sm_->handler)
 #define COMPARE(sm,task)    (sm.handler == (function_pointer)task)
 
 /* Exported functions ------------------------------------------------------- */
