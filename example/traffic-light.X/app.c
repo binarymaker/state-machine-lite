@@ -19,6 +19,8 @@
   \endcond*/
 
 /* Includes ------------------------------------------------------------------*/
+#include "app.h"
+#include "mcu.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
@@ -26,3 +28,26 @@
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
+STATE(GREEN)
+{
+  if (ENTRY)
+  {
+    GPIO_PinWrite(P_B0, HIGH);
+    GPIO_PinWrite(P_B1, LOW);
+  }
+  
+  NEXT_STATE(RED);
+  
+}
+
+STATE(RED)
+{
+  if (ENTRY)
+  {
+    GPIO_PinWrite(P_B0, LOW);
+    GPIO_PinWrite(P_B1, HIGH);
+  }
+  
+  NEXT_STATE(GREEN);
+  
+}

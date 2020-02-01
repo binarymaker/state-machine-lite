@@ -30,3 +30,4 @@
 ### Ceedling ###
 /test/**/build/**
 test/simulation/Last Loaded eScale.pdsbak
+test/simulation/Last Loaded traffic-light.pdsbak

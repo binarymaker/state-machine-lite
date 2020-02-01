@@ -20,10 +20,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "mcu.h"
+#include "app.h"
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+state_machine traffic_light_sm;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -33,12 +35,10 @@ main()
   MCU_Init();
   
   MCU_INTERRUPT_ENABLE();
-
+  INIT(traffic_light_sm, GREEN);
   while(1)
   {
-    GPIO_PinWrite(P_B0, HIGH);
-    DELAY_ms(1000);
-    GPIO_PinWrite(P_B0, LOW);
+    EXEC(traffic_light_sm);
     DELAY_ms(1000);
   }
 }

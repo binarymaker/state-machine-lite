@@ -48,6 +48,7 @@
       <itemPath>app.h</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>main.h</itemPath>
+      <itemPath>../../source/state-machine.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -60,6 +61,7 @@
     <Elem>../../config/config-avr-atmega-driver</Elem>
     <Elem>../../library/embclib/source</Elem>
     <Elem>.</Elem>
+    <Elem>../../source</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
@@ -172,7 +174,7 @@
       </AVR-GCC>
       <AVR-Global>
         <property key="common-include-directories"
-                  value="..\..\library\avr-atmega-driver\source;..\..\library\embclib\source;..\..\library\embclib\source\utils;..\..\library\embclib\source\crc8-ccitt;..\..\config\config-avr-atmega-driver;..\..\config\config-embclib"/>
+                  value="..\..\library\avr-atmega-driver\source;..\..\library\embclib\source;..\..\library\embclib\source\utils;..\..\library\embclib\source\crc8-ccitt;..\..\config\config-avr-atmega-driver;..\..\config\config-embclib;..\..\source"/>
         <property key="eep" value="false"/>
         <property key="external-ram-check" value="false"/>
         <property key="hex" value="true"/>
