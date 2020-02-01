@@ -16,6 +16,7 @@
                 <sourceRootElem>../../library/avr-atmega-driver/source</sourceRootElem>
                 <sourceRootElem>../../config/config-avr-atmega-driver</sourceRootElem>
                 <sourceRootElem>../../library/embclib/source</sourceRootElem>
+                <sourceRootElem>.</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

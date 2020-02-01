@@ -43,6 +43,11 @@
         <itemPath>../../library/embclib/source/ctype.h</itemPath>
         <itemPath>../../library/embclib/source/regctrl.h</itemPath>
       </logicalFolder>
+      <itemPath>app-cfg.h</itemPath>
+      <itemPath>app.c</itemPath>
+      <itemPath>app.h</itemPath>
+      <itemPath>main.c</itemPath>
+      <itemPath>main.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -54,6 +59,7 @@
     <Elem>../../library/avr-atmega-driver/source</Elem>
     <Elem>../../config/config-avr-atmega-driver</Elem>
     <Elem>../../library/embclib/source</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
