@@ -25,6 +25,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+time_t start_time;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -33,14 +34,36 @@ STATE(GREEN)
   if (ENTRY)
   {
     GPIO_PinWrite(P_B0, HIGH);
-    GPIO_PinWrite(P_B1, LOW);
+    start_time = SYSTIMER_Millis();
   }
   
-  NEXT_STATE(RED);
+  if ((SYSTIMER_Millis() - start_time) > 5000)
+  {
+    NEXT_STATE(YELLOW);
+  }
   
   if (EXIT)
   {
+    GPIO_PinWrite(P_B0, LOW);
+  }
+}
+
+STATE(YELLOW)
+{
+  if (ENTRY)
+  {
     GPIO_PinWrite(P_B2, HIGH);
+    start_time = SYSTIMER_Millis();
+  }
+  
+  if ((SYSTIMER_Millis() - start_time) > 2000)
+  {
+    NEXT_STATE(RED);
+  }
+  
+  if (EXIT)
+  {
+    GPIO_PinWrite(P_B2, LOW);
   }
 }
 
@@ -48,14 +71,17 @@ STATE(RED)
 {
   if (ENTRY)
   {
-    GPIO_PinWrite(P_B0, LOW);
     GPIO_PinWrite(P_B1, HIGH);
+    start_time = SYSTIMER_Millis();
   }
   
-  NEXT_STATE(GREEN);
+  if ((SYSTIMER_Millis() - start_time) > 5000)
+  {
+    NEXT_STATE(GREEN);
+  }
   
   if (EXIT)
   {
-    GPIO_PinWrite(P_B2, LOW);
+    GPIO_PinWrite(P_B1, LOW);
   }
 }

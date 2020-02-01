@@ -41,6 +41,7 @@
 
 STATE(GREEN);
 STATE(RED);
+STATE(YELLOW);
 
 #ifdef __cplusplus
 }

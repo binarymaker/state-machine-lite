@@ -39,6 +39,5 @@ main()
   while(1)
   {
     EXEC(traffic_light_sm);
-    DELAY_ms(1000);
   }
 }
