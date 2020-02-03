@@ -18,8 +18,8 @@
   ******************************************************************************
   \endcond*/
 
-#ifndef STATE_MACHINE_1ca22bb4_44b8_11ea_91cf_705a0f25cb51
-#define STATE_MACHINE_1ca22bb4_44b8_11ea_91cf_705a0f25cb51
+#ifndef __STATE_MACHINE_1ca22bb4_44b8_11ea_91cf_705a0f25cb51
+#define __STATE_MACHINE_1ca22bb4_44b8_11ea_91cf_705a0f25cb51
 
 #ifdef __cplusplus
  extern "C" {
@@ -47,6 +47,8 @@ typedef struct{
 /* Exported constants --------------------------------------------------------*/
 /* Exported macro ------------------------------------------------------------*/
 #define STATE_MACHINE_State(task)               void task(stateMachine_st *_sm_)
+
+#define STATE_MACHINE_ptr                                                 (_sm_)
 
 #define STATE_MACHINE_StateChange(task)                                        \
 {                                                                              \
@@ -80,5 +82,5 @@ typedef struct{
 }
 #endif
 
-#endif /* STATE_MACHINE_1ca22bb4_44b8_11ea_91cf_705a0f25cb51 */
+#endif /* __STATE_MACHINE_1ca22bb4_44b8_11ea_91cf_705a0f25cb51 */
 
